@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <style>
+            body { background-color: black; color: ivory;}
+            table { border-collapse: collapse; }
+            table, tr, td, th { border: 2px solid ivory; padding: 5px;}
+            h1 { color: brown; }
+            h3 { color: orangered}
+            a { color: green; text-decoration: none; }
+            a:hover { color: lightgreen; }
+            tr:hover { background-color: dimgrey; cursor: pointer; }
+            footer { border-top: 1px solid #888; color: white; margin-top: 20px; font-style: italic; font-size: 11px; clear: both;}
+            #navigation {width: 200px; float: left}
+            #content {float: left;}
+
+        </style>
+        <title>
+        {% block title %}
+            Tytuł strony
+        {% endblock %}
+        </title>
+    </head>
+    <body>
+
+        {% block navigation %}
+        <div id="navigation">
+            <a href="/main-page"><h4>Main Page</h4></a></br>
+            <a href="/add-person"><h4>Add Person</h4></a></br>
+            <a href="/add-movie"><h4>Add Movie</h4></a></br>
+            <a href="/add-genre"><h4>Add Genre</h4></a></br>
+            <a href="/persons"><h4>Persons</h4></a></br>
+            <a href="/movies"><h4>Movies</h4></a></br>
+            <a href="/search-movie"><h4>Search Movie</h4></a></br>
+        </div>
+        {% endblock %}
+
+        <div id="content">
+
+        {% block content %}
+        {% endblock %}
+
+        </div>
+
+        {% block footer %}
+        <footer>
+        	Copyright by MovieDatabase
+        </footer>
+        {% endblock %}
+    </body>
+</html>

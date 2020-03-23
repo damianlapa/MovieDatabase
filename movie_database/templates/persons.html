@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Persons
+{% endblock %}
+
+{% block content %}
+<table>
+<th>Last Name</th><th>First Name</th>
+
+{% for person in persons %}
+<form action="del-person/{{ person.id }}" method="post" name="delete">
+<tr>
+    {% csrf_token %}
+    <input type="hidden" name="delete_id" value="{{ person.id }}">
+    <td>{{person.last_name}}</td><td>{{person.first_name}}</td>
+    <td><a href="{% url 'person-edit' person.id %}">Edytuj</a></td>
+    <td><input type="submit" value="DELETE" name="delete"></td>
+</tr>
+</form>
+{% endfor %}
+</table>
+<a href="/add-person"><h3>Add new person</h3></a>
+{% endblock %}

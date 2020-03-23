@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Edit movie: {{ movie.title }}
+{% endblock %}
+
+{% block content %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    <label>Title:
+        <input type="text" name="title" value={{ title }}>
+    </label>
+    <label>Director:
+        <select name="director">
+            {% for person in persons %}
+            <option value="{{person.id}}" {% if person.id == movie.director_id %} selected {% endif %}>
+                {{ person.first_name }} {{person.last_name}}</option>
+            {% endfor %}
+        </select>
+    </label>
+    <label>Screenplay:
+        <select name="screenplay">
+            {% for person in persons %}
+            <option value="{{person.id}}" {% if person.id == movie.screenplay_id %} selected {% endif %}>
+                {{ person.first_name }} {{person.last_name}}</option>
+            {% endfor %}
+        </select>
+    </label>
+    <label>Starring:
+        <select name="starring">
+            {% for person in persons %}
+            <option value="{{person.id}}" {% if person == starring %} selected {% endif %}>
+                {{ person.first_name }} {{person.last_name}}</option>
+            {% endfor %}
+        </select>
+    </label>
+    <label>Role:
+        <input type="text" name="role" value = {{ role }}>
+    </label>
+    <label>Year:
+        <input type="number" name="year" value= {{ movie.year }}>
+    </label>
+    <label>Rating:
+        <input type="number" name="rating" value= {{ movie.rating }} min="0" max="10" step="0.1">
+    </label>
+    <label>Genre:
+        <select name="genre">
+            {% for genre in genres %}
+            <option value="{{ genre.id }}" {% if genre == movie_genre %} selected {% endif %}>
+                {{ genre }}</option>
+            {% endfor %}
+        </select>
+    </label>
+    <input type="submit" value="Edit" name="action">
+</form>
+
+<a href="/main-page"><h3>Back to main page</h3></a>
+
+{% endblock %}}

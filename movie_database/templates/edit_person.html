@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Edit: {{person}}
+{% endblock %}
+
+{% block content %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    <label>First Name:
+        <input type="text" name="first_name" value="{{person.first_name}}">
+    </label>
+    <label>Last Name:
+        <input type="text" name="last_name" value="{{person.last_name}}">
+    </label>
+    <input type="submit" value="Edit">
+</form>
+
+<a href="/main-page"><h3>Back to main page</h3></a>
+
+{% endblock %}}

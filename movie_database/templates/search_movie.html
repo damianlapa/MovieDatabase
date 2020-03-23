@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}
+
+Search Movies
+
+{% endblock %}
+
+{% block content %}
+
+<h1>Search Movies:</h1>
+
+<table>
+    <th>Title</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Issued after</th>
+    <th>Issued before</th>
+    <th>Genre</th>
+    <th>Rating greater than:</th>
+    <th>Rating lesser than:</th>
+
+    <tr>
+        <form action="" method="post">
+            {% csrf_token %}
+            <td><input type="text" name="title"></td>
+            <td><input type="text" name="first_name"></td>
+            <td><input type="text" name="last_name"></td>
+            <td><input type="number" name="year_from"></td>
+            <td><input type="number" name="year_to" value="2020"></td>
+            <td><input type="text" name="genre" placeholder="genre, genre..."></td>
+            <td><input type="number" name="bottom_rate" min="0" max="10" value="0" step="0.1" ></td>
+            <td><input type="number" name="top_rate" min="0" max="10" value="10" step="0.01"></td>
+            <td><input type="submit" value="Search"></td>
+        </form>
+    </tr>
+
+
+</table>
+
+{% endblock %}

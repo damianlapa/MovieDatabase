@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+{{movie.title}}({{movie.year}})
+
+{% endblock %}
+
+{% block content %}
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Director</th>
+        <th>Screenplay</th>
+        <th>Year of issue</th>
+        <th>Rating</th>
+        <th>Starring</th>
+        <th>Role</th>
+        <th>Genre</th>
+    </tr>
+    <tr>
+        <td>{{movie.title}}</td>
+        <td>{{movie.director}}</td>
+        <td>{{movie.screenplay}}</td>
+        <td>{{movie.year}}</td>
+        <td>{{movie.rating}}</td>
+        <td>{{starring}}</td>
+        <td>{{role}}</td>
+        <td>{{genre}}</td>
+    </tr>
+
+</table>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Movies
+{% endblock %}
+
+{% block content %}
+
+{% if not search %}
+
+<table>
+    <th colspan="3">Sort movies by rating:</th>
+<tr><form action="" method="post">
+    {% csrf_token %}
+    <td><input type="submit" value="Ascending" name="action"></td>
+    <td><input type="submit" value="Descending" name="action"></td>
+    <td><input type="submit" value="Default(by date)" name="action"></td>
+
+</form>
+    </tr>
+</table>
+</br>
+
+{% endif %}
+
+<table>
+<th>Title</th><th>Year</th><th>Director</th><th>Rating</th>
+
+
+{% for movie in movies %}
+<form action="del-movie/{{ movie.id }}" method="post" name="delete">
+<tr>
+        {% csrf_token %}
+        <input type="hidden" name="delete_id" value="{{ movie.id }}">
+        <td><a href="{% url 'movie-details' movie.id %}">{{ movie.title }}</a></td><td>{{movie.year}}</td>
+        <td>{{movie.director}}</td><td>{{movie.rating}}</td>
+        <td><a href="{% url 'movie-edit' movie.id %}">EDIT</a></td>
+        <td><input type="submit" value="DELETE" name="delete"></td>
+</tr>
+    </form>
+{% endfor %}
+</table>
+
+<a href="/add-movie"><h3>Add new movie</h3></a>
+
+<a href="/main-page"><h3>Back to main menu</h3></a>
+
+{% endblock %}
